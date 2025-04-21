@@ -14,3 +14,5 @@ CP220: Digital Electronics
 CP216: Microprocessors
 
 CP363: Databases
+
+CP428: Artificial Intelligence
