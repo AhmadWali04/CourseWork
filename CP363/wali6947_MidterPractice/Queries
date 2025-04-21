@@ -1,1 +1,280 @@
+MIDTERM 1 PRACTICE
+	    1. Retrieve the number, the name and the date of birth of each player living in Stratford
+	    and who joined the club after 1980. The resulting table should be sorted in
+	    alphabetical order of name.
+		SELECT PLAYERNO,NAME,BIRTH_DATE
+		FROM PLAYERS
+		WHERE TOWN = 'Stratford' AND JOINED > 1980
+		ORDER BY NAME ASC
+		○ My attempt, not sure if I used ascending right, but it checks all the stuff, refernces a table, uses 2 checking conditions and orders by ascending
+	
+	
+	    2. Retrieve the names of the players who have incurred at least one penalty.
+		    1 	SELECT NAME
+		    2 	FROM
+		    3 	PLAYERS p JOIN, PENALTIES pen
+		    4 	WHERE p.PLAYERNO = pen.PLAYERNO
+		    5 	ORDER BY NAME
+		○ Joins the tables matching the player numbers 
+	
+	    3. For each penalty incurred by a player, find the payment number and the player’s
+	    name.
+		SELECT PAYMENTNO, NAME
+		FROM
+		PLAYERS p , JOIN PENALTIES pen
+		WHERE p.PLAYERNO = pen.PLAYERNO
+		ORDER BY p.PAYMENTNO, p.NAME
+		○ Joins the player and penalties table, on the condition that the player has commit a penalty. Returns that persons payment number and name
+	
+	    4. Retrieve the names and numbers of the players who live in the same town as player
+	    number 9.
+		    1 	SELECT NAME, PLAYERNO
+		    2 	FROM PLAYERS
+		    3 	WHERE TOWN IN (
+		    4 	        SELECT TOWN
+		    5 	        FROM PLAYERS
+		    6 	        WHERE PLAYERNO = 9)
+		○ Uses a nested IN statement to find the town of player#9 and return that to the main queries
+		○ The IN statement is used to specify conditions on certain attributes. Like how the town must be the town that player 9 is in.
+	
+	    5. Find the name and the number of each player whose name ends with a lowercase
+	    letter r, or whose name has the lowercase letter e as the penultimate letter.
+		SELECT NAME, PLAYERNO
+		FROM PLAYER
+		WHERE (LIKE '%r') OR (LIKE '%e_')
+		○ Uses the % key to determine the position of where the substring can be. 
+			§ %r seaches if r is at the end
+			§ r% searches if r is at the front
+		○ Uses an underscore to denote that e is the SECOND LAST item, and we know its at the end the % is in the front
+		
+	    6. Find the player number, name, initials of each player who has played in at least one
+	    match for team number 1.
+		SELECT p.PLAYERNO, p.NAME, p.INITIALS
+		FROM PLAYERS p
+		WHERE p.PLAYERNO IN (
+		        SELECT PLAYERNO
+		        FROM MATCHES
+		        WHERE TEAMNO = '1')
+		
+		○ Uses the player table to reference the player MATCHES table. This is because a playerNum is only recorded in matches if they have played for them atleast once. 
+		○ Uses IN to check for playerNumber in the matches table where they are on team 1
+	
+	    7. Find the player number, name of each player who is older than the player “John
+	    Smith”.
+		SELECT PLAYERNO, NAME
+		FROM PLAYER
+		WHERE BIRTH_DATE <
+		        (SELECT DISTINCT BIRTH_DATE
+		        FROM PLAYERS
+		        WHERE NAME = 'John Smith')
+		○ This is the first solution. It uses < to reference a condition where the birthdate is older than that of the player named john smith. It uses a nested queiry to find john smith by referencing his name
+		    1 	SELECT p.PLAYERNO, p.NAME
+		    2 	FROM PLAYERS p, PLAYERS js
+		    3 	WHERE js.NAME = 'Jhon Smith' AND p.BIRTH_DATE <js.BIRTHDATE
+		    4 
+		○ This method creates two references to the PLAYERS table. One for General Players, and one just for John Smith. It then compares their references
+		
+	    8. Find the player number, date of birth and the name of each player whose birth date is
+	    between those of the player “John Smith” and the player “Jean Dupont”.
+		SELECT p.PLAYERNO, p.NAME, p.BIRTHDATE
+		FROM PLAYERS p, PLAYERS js, PLAYERS jd
+		WHERE p.BIRTH_DATE BETWEEN
+		        (SELECT js.BIRTHDATE
+		        FROM PLAYERS
+		        WHERE js.NAME = 'Jhon Smith') 
+		        AND
+		        (SELCT jd.BIRTHDATE
+		        FROM PLAYERS
+		        WHERE jd.NAME = 'Jean Dupont')
+		○ This uses the BETWEEN function to automatically search between two values.
+		○ The first value is given with the subquery which is the birthdate of jhon smith, and the second value is the second subquery for jean dupon
+		
+	    9. Find the names and initials of the players who are not team captains.
+		SELECT p.NAME, p.INITIALS
+		FROM PLAYERS p
+		INNER JOIN COMMITEE_MEMBERS cm
+		WHERE cm.POSITION NOT 'Team Captain'
+		○ This may be wrong but the acc answer doesn’t make sense.
+		○ Merges two tables together, and checks if the position is team captain or not
+		
+	    10. Retrieve the player numbers, names and dates of birth of the oldest player. (the oldest
+	    player is the player whose date of birth is less than or equal to that of every other
+	    player. We suppose that there is only one such player.
+		SELECT PLAYERNO,NAME,BIRTH_DATE
+		FROM PLAYERS
+		WHERE BIRTH_DATE <= ALL
+		        (SELECT BIRTH_DATE
+		        FROM PLAYERS)
+		○ This uses the ALL command, which scans for everything under the given parameter
+		○ In this context, we pass the birth date as the parameter, and take it from the players table
+	
+	    11. For each team find the team number and the number of the player with the lowest
+	    number of sets won.
+		SELECT DISTINCT TEAMNO, PLAYERNO
+		FROM MATCHES AS M1
+		WHERE WON<= ALL
+		        (SELECT WON
+		        FROM MATCHES AS M2
+		        WHERE M1.TEAMNO = M2.TEAMNO)
+		○ The query selects the DISTINCT teamnumber and playernumber as we want for *each* team
+		○ It aliases the matches table to me M1 checks where they have won the least out of ALL teams
+		○ It parameterizes the ALL statement by checking for matches won, and references the matches table again as M2. this is because we sort of go through the database like a 'list' twice, and were checking each team against everybody else. We want to reference the 'list' twice, so we have m1 and m2.
+		○ The condition M1.TEAMNO =M2.TEAMNO ensures that the subquery only considers matches from the same team as the outer query
+	
+	    12. Retrieve the names and birth dates of all players except the oldest player.
+		SELECT NAME, BIRTHDATE
+		FROM PLAYERS
+		WHERE BIRTHDATE > ANY
+		        (SELECT BIRTHDATE
+		        FROM PLAYERS)
+		○ Selects the name and birthdate of all players where its greater than ANY other birthdate
+		○ The oldest birthdate is not greater than any other birthdate, so therefore it will not be returned
+	
+	    13. Find the numbers of the players who have incurred at least one penalty that is higher
+	    than a penalty paid by player 6.
+		SELECT DISTINCT p.PLAYERNO AS NUMPLAYERS
+		FROM PLAYERS p 
+		JOIN PENALTIES pen ON p.PLAYERNO = pen.PLAYERNO
+		WHERE pen.AMOUNT > ANY
+		        (SELECT AMOUNT 
+		        FROM PENALTIES
+		        WHERE PLAYERNO        = 6)
+		○ This uses the player number key to merge players and penalties table and check and return any body where they have greater penalty amount than player number 6
+	
+	    14. Find the numbers of the players who have not incurred a penalty of $20.
+		SELECT DISTINCT PLAYERNO AS NUMPLAYERS
+		FROM PLAYERS
+		WHERE PLAYERNO NOT IN 
+		        (SELECT PLAYERNO
+		        FROM PENALTIES
+		        WHERE AMOUNT = 20)
+		○ Selects all the players that are NOT in the list of players that have a penalty amount of 20
+		
+	    15. Find the numbers of the players who have incurred a penalty of $20.
+		SELECT DISTINCT PLAYERNO AS NUMPLAYERS
+		FROM PENALTIES
+		WHERE AMOUNT = 20
+		○ This ones super straight forward
+	
+	    16. Retrieve the team number and the division of each team for which player 6 has not
+	    competed.
+		SELECT TEAMNO, DIVISION
+		FROM TEAMS
+		WHERE TEAMNO NOT IN
+		        (SELECT TEAMNO
+		        FROM TEAMS
+		        WHERE PLAYERNO = 6)
+		○ This uses TEAMNO and not PLAYERNO because were returning teams where 6 has not been on
+	
+	    17. Retrieve the player number for each player who has only played in teams in which
+	    player 57 has never competed.
+		SELECT PLAYERNO
+		FROM PLAYERS
+		WHERE PLAYERNO NOT IN
+		        (SELECT PLAYERNO
+		        FROM MATCHES
+		        WHERE TEAMNO NOT IN
+		                (SELECT TEAMNO
+		                FROM TEAM
+		                WHERE PLAYERNO = 57))
+		○ This is a 3 part query that says
+			§ Selects players that are NOT IN the list of (next query)
+			§ Selects players that are NOT IN the list of teams that have played matches against
+			§ A list of teams that have the player 57 on them
+	
+	    18. What is the lowest penalty amount incurred by a player living in Stratford?
+		SELECT MIN(AMOUNT)
+		FROM PENALTIES pen
+		JOIN PLAYERS p ON pen.PLAYERNO = p.PLAYERNO
+		WHERE p.TOWN ='Stratford'
+		○ Selects the minimum amount using the MIN function
+		○ Joins the tables only on the play condition where the playerNumbers match
+		○ And returns when the town is stratford
+	
+	    19. What is the total amount of penalties incurred by players living in Stratford?
+		SELECT SUM(pen.AMOUNT)
+		IN PENALTIES pen
+		JOIN PLAYERS p ON pen.PLAYERNO = p.PLAYERNO
+		WHERE p.TOWN = 'Stratford'
+		○ Uses the SUM method to take the sum of all the penalties, joins on the appropriate key condition
+		○ And specifies the condition that the players must be from Stratford
+	
+	    20. Which players have ever incurred a penalty greater that the average penalty?
+		SELECT DISTINCT pen.PLAYERNO
+		FROM PENALTIES pen
+		WHERE pen.AMOUNT > 
+		        (SELECT AVG(AMOUNT)
+		        FROM PENALTIES)
+		○ Select all the DISTINCT players that have penalties greater than the average penalty amount
+		○ Uses the AVG method to get the AVERAGE
+	
+	    21. For each team whose captain lives in Stratford, find the team number and the number
+	    of matches played by that team.
+		○ SELECT TEAMNO, DISTINCT m.MATCHNO AS NUMMATCHES
+		FROM TEAMS t, MATCH m
+		JOIN PLAYERS p ON t.PLAYERNO = p.PLAYERNO
+		JOIN COMMITE_MEMBERS cm ON p.PLAYERNO = cm.PLAYERNO
+		WHERE cm.PLAYERNO IN
+		        (SELECT PLAYERNO
+		        FROM COMMITE_MEMBERS
+		        WHERE POSITION = 'Captain')
+		AND p.PLAYERNO IN  
+		        (SELECT PLAYERNO
+		        FROM PLAYERS
+		        WHERE TOWN = 'Stratford')
+		
+		○ Select the team number and number of matches played FROM team
+			§ Connect team -> players-> commiteemembers
+			§ Match number is separate cuz idk what to put there
+		○ Join the committee members and players table as I need to check their info (town/position)
+		○ WHERE subquery 1 AND subquery 2
+			§ Subquery 1 gives you the playerNuber of anybody whos a captain
+			§ Subquery 2 gives you the playernumber of anybody living in stratford
+		○ 'return where the list of players is in the list of captains and the list of people living in stratford'
+	
+	    22. Find the numbers of players who have incurred at least 2 penalties.
+		SELECT PLAYERNO
+		FROM PENALTIES
+		GROUP BY PLAYERNO
+		HAVING COUNT(*) >=2
+		○ Use the GROUP BY method to aggregate and join all the players so that we only have one row for each of em
+		○ Use the HAVING COUNT filters the list to only return those in the GROUP BY method with 2 or more 
+	
+	    23. For each player who has incurred more than $150 worth of penalties in total, find the
+	    player number and the total amount of penalties.
+		SELECT PLAYERNO, SUM(AMOUNT)
+		FROM PENALTIES
+		GROUP BY PLAERNO
+		HAVING SUM(AMOUNT) > 150
+		○ Uses GROUP BY to aggregate all the distinct player numbers,
+		○ Uses HAVING to filter the results of a GROUP BY
+	
+	    24. Find the number of all players, who have incurred at least one penalty, or are
+	    captains, or live in Stratford, or for whom two or three of these conditions apply.
+		SELECT PLAYERNO
+		FROM PENALTIES
+		        UNION
+		SELECT PLAYERNO
+		FROM TEAMS
+		        UNION
+		SELECT PLAYERNO
+		FROM PLAYERS
+		WHERE TOWN = 'Stratford'
+		○ Uses UNION to combine all the sets just like how you use OR in discrete math
+	
+	    25. Find the number and date of birth of each player who lives in Stratford, but was not
+	    born after 1960.
+		SELECT PLAYERNO, BIRTH-DATE
+		FROM PLAYERS
+		WHERE TOWN='Stratford'
+		        EXCEPT
+		SELECT PLAYERNO, BIRTH-DATE
+		FROM PLAYERS
+		WHERE BIRTH-DATE > 1960
+		○ Uses EXCEPT to create a second subquery, OR use 
+		SELECT PLAYERNO, BIRTH-DATE
+		FROM PLAYERS
+		WHERE TOWN='Stratford'
+		AND NOT(BIRTH-DATE > 1960)
+		○ This uses AND NOT to set an exception case
 
