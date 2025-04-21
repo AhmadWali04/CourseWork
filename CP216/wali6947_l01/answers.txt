@@ -1,0 +1,21 @@
+-------------------------------------------------------
+answers.txt
+-------------------------------------------------------
+Author:  Ahmad Wali
+ID:      169036947
+Email:   wali6947@mylaurier.ca
+Date:    2025-01-21
+-------------------------------------------------------
+Answers for Lab 1
+-------------------------------------------------------
+
+Task 1
+No differences for this task, it still the same since the hex values
+and decimal values match
+
+Task 2
+Yes it is legal to add the valued to itself as the read function would
+work first, then the store function would add it to itself in that order
+
+Task 3
+It does not work when I try to directly add 4 and 5 in one line , as it returns a bad expression error. This is because the registers can only reference one value each at a time, unless they check into another register. Because of this, we can make this work when we add 4 but as a value from another register.
