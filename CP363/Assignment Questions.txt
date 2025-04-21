@@ -1,0 +1,65 @@
+---
+
+## **ASSIGNMENT 1:**
+
+1. Selects all rows from the `broad` table sorted by the broad category description.  
+2. Selects rows from the `broad` table that start with the word "Military," sorted by the broad category description.  
+3. Selects rows from the `broad` table that contain the word "Military," sorted by the broad category description.  
+4. Selects the publication title and authors for all rows in the `pub` table, sorted by the publication title.  
+5. Selects the publication title for rows in the `pub` table for member William Bain, sorted by the publication title.  
+6. Selects the publication title of books in the `pub` table, sorted by the publication title.  
+7. Selects the publication title of books in the `pub` table written by Allan English, sorted by the publication title.  
+8. Selects the broad category description for rows in the `vMemberBroad` view for Terry Copp, sorted by the broad category description.  
+9. Selects the member surname and forename for rows in the `vMemberBroad` table for the broad category "Military History," sorted by the member surname then forename.  
+10. Selects all rows from the `narrow` table, sorted by the narrow category description then the broad category ID.  
+11. Selects the broad and narrow descriptions for all rows from the `vBroadNarrow` view, sorted by broad category description then narrow category description.  
+12. Selects the narrow category descriptions for rows in the `vBroadNarrow` view for the broad category "Military History," sorted by the narrow category description.
+
+---
+
+## **ASSIGNMENT 2:**
+
+1. Selects the full member name, the full publication type, and the publication title for all members, sorted by the full member name, then the full publication type, then the publication title.  
+2. Selects the full member name, the full publication type, and the publication title for members associated with "Laurier," sorted by the full member name.  
+3. Selects the full member name and the publication title for conference papers with the word "Nuclear" in the title, sorted by the publication title.  
+4. Selects the publication title and the full publication type for William Bain, sorted by the publication title.  
+5. Selects the full member name and the number of publications for each member, sorted by the full member name. (Includes members with no publications.)  
+6. Selects the full member name and the number of books for each member, sorted by the full member name. (Includes members with no books.)  
+7. Selects the full publication type and the number of publications for each type, sorted by the full publication type.  
+8. Selects the full member name and the number of broad expertises for each member, sorted by the full member name.  
+9. Selects the broad expertise descriptions and the number of members who have that expertise, sorted by the expertise description.  
+10. Selects the full member name and the number of narrow expertises for each member, sorted by the full member name.  
+11. Selects the narrow expertise descriptions and the number of members who have that expertise, sorted by the expertise description.  
+12. Selects the member full name, the member’s narrow expertises, and the broad expertise that the narrow expertises belong to, sorted by the full member name then the narrow expertise description.
+
+---
+
+## **ASSIGNMENT 3:**
+
+1. Selects the full member name and the number of publications for each member of each publication type. Name publication type fields as **books**, **articles**, and **papers**. Sort the results by the full member name.
+2. Selects the full member name and the number of broad and narrow expertises for each member. Name these expertise count fields **broadCount** and **narrowCount**. Sort the results by the full member name.
+3. Selects the full member name and narrow expertise descriptions for members who have a narrow expertise in the **Environmental Security** broad category, but who have **not** declared that they have a broad expertise in Environmental Security. Sort the results by the full member name.
+4. Selects the full member name and broad expertise descriptions for members who do **not** have publications. Sort the results by the full member name and then broad expertise description.
+5. Selects the full member name and publication count for all members with **four or more** publications. Name the publication count **pubCount**. Sort the results by the full member name.
+6. Selects the **narrow expertise descriptions** of all narrow expertises that are **not held by any member**. Sort the results by the narrow expertise description.
+7. Selects the **broad expertise descriptions** of all broad expertises that are **not held by any member**. Sort the results by the broad expertise description.
+8. Selects the full member name and broad expertise count for all members with **eight or more** broad expertises. Name the broad expertise count **broadCount**. Sort the results by the full member name.
+9. Selects the full member name and narrow expertise count for all members with **thirty or more** narrow expertises. Name the narrow expertise count **narrowCount**. Sort the results by the full member name.
+10. Selects the **broad expertise description** for all broad expertises that do **not have any associated narrow expertises**. Sort the results by the broad expertise description.
+
+---
+
+## **ASSIGNMENT 4:**
+
+1. Selects the `TABLE_NAME`, `TABLE_TYPE`, `TABLE_ROWS`, and `TABLE_COMMENT` attributes from the `TABLES` table. Sort the results by the table name.
+2. Selects the `TABLE_NAME`, `TABLE_TYPE`, `TABLE_ROWS`, and `TABLE_COMMENT` attributes from the `TABLES` table for tables with 100 or more rows. Sort the results by the table name.
+3. Selects the `TABLE_NAME`, `IS_NULLABLE`, `COLUMN_NAME`, and `DATA_TYPE` attributes from the `COLUMNS` table. Sort the results by the table name and then column name.
+4. Selects the `TABLE_NAME`, `COLUMN_NAME`, and `DATA_TYPE` attributes from the `COLUMNS` table for nullable columns. Sort the results by the table name and then column name.
+5. Selects the `CONSTRAINT_NAME`, `TABLE_NAME`, and `CONSTRAINT_TYPE` attributes from the `TABLE_CONSTRAINTS` table. Sort the results by the constraint name and then table name.
+6. Selects the `CONSTRAINT_NAME` and `TABLE_NAME` attributes from the `TABLE_CONSTRAINTS` table for `UNIQUE` constraints. Sort the results by the constraint name and then table name.
+7. Selects the `CONSTRAINT_NAME`, `UPDATE_RULE`, `DELETE_RULE`, `TABLE_NAME`, and `REFERENCED_TABLE_NAME` attributes from the `REFERENTIAL_CONSTRAINTS` table. Sort the results by the constraint name, then table name, then referenced table name.
+8. Selects the `CONSTRAINT_NAME`, `UPDATE_RULE`, `TABLE_NAME`, and `REFERENCED_TABLE_NAME` attributes from the `REFERENTIAL_CONSTRAINTS` table for constraints whose delete rule is not `CASCADE`. Sort the results by the constraint name, then table name, then referenced table name.
+9. Selects the `CONSTRAINT_NAME`, `TABLE_NAME`, `COLUMN_NAME`, `REFERENCED_TABLE_NAME`, and `REFERENCED_COLUMN_NAME` attributes from the `KEY_COLUMN_USAGE` table. Sort the results by the table name and then column name.
+10. Selects the `TABLE_NAME`, `COLUMN_NAME`, `REFERENCED_TABLE_NAME`, and `REFERENCED_COLUMN_NAME` attributes from the `KEY_COLUMN_USAGE` table for **primary keys only**. Sort the results by the table name and then column name.
+
+---
