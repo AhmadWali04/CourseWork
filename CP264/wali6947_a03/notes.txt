@@ -1,0 +1,7 @@
+Strings are just an array of characters that point at eachother
+we can see this in the str_words method. 
+
+Create pointers to the string (the string ends at '\0')
+we create a for loop from up until the last character in the string, and 
+
+I dont get the str_trim shit, gotta do that whole assignment again damn
