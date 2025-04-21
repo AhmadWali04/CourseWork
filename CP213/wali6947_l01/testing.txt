@@ -1,0 +1,23 @@
+"""
+-------------------------------------------------------
+testing.txt
+CP213 Documentation Lab Testing
+-------------------------------------------------------
+Author:  Ahmad Wal
+ID: 169036947     
+Email: wali6947@mylaurier.ca  
+Version: 2024-09-10
+-------------------------------------------------------
+"""
+readNumbers:
+1
+2
+3
+q
+Total:
+6
+
+countTokens:
+
+countLines:
+
