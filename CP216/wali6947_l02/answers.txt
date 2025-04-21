@@ -1,0 +1,19 @@
+-------------------------------------------------------
+answers.txt
+-------------------------------------------------------
+Author: Ahmad Wali
+ID:16906947
+Email: wali6947@mylaurier.ca
+Date:    2025-01-29
+-------------------------------------------------------
+Answers for Lab 1
+-------------------------------------------------------
+Task 1:
+Theres a few syntax errors, such as how we should be saying thing like "ldr r3, =A" and not "r3 = A;". We need to add a comma after the r3, get rid of the space between A and the = sign, and erase the semicolon.
+This error reeats itself for when we try to load r3 to B. The other error is that it does not correctly add r2. We can only add values from registers into a register, so "add r2, r1, [r0]" is invalid syntax, and we have to remove the square brackets around r0 to fix it.
+
+Task 2:
+Here we incorrectly reference the second register in our storage statements, as we should have them wrapped in a square bracket. This is because Statements like "ldr r3 =Total" reference the memory address of Total, but we cannot store that, so we need to store the contents inside of it (which is signified by the squre brackets). Also, there is a typo on how the Diff function is spelt, which is fixed by removing an F.
+
+Task 3:
+We redundantly said .text, we dont need to do that . I had to create another chunk of code for copying contents of the third element of vector 1 to vector 2 (we know this since vec1 has 3 words. We need to update the space in vec2 so that theres enough for the new values being copied in, we also had to update add statement when we are copying contents of second element of vec1 to vec2, by making sure that we add 4 to it and not 2. 
