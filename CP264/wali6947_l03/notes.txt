@@ -1,0 +1,20 @@
+Sum integers function:
+this method utilizes the scanf method, which scans the users input
+and stores it as a value. Here we use it to create a variable called num
+if we have a number, add it to the total, otherweise break.
+
+Sum Three integers:
+now the scanf method declares 3 variables, num1,num 2 and num3
+if we get anything other than whats considered valid form the get char method, 
+we ask for another input. \n means a new line.
+
+int_array_read:
+we take a pointer to an array as a parameter and have a size.
+the fgets method works by taking contents from a file and reading it up until the line breaks.
+
+We creata character array of 50 spaces to store all the inputs. We create a branch in our code that 
+handles any input/output errors. Checks if reading a standard input (stdin) from fgets was successfull
+if it wasnt we know we had an error and print it. 
+
+Otherwise, assuming no error, we take the value and assign it to a new index in the array. This is referenced
+by using pointer notation. Otherwise, we have an invalid input.
