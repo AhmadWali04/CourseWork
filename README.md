@@ -1,5 +1,5 @@
-# CourseWork
-All the CP course work (Labs &amp; Assignments) with 100% on WLU courses.
+# Course Work
+All Computer Programming course work (Labs &amp; Assignments) with 100% on WLU courses, completed by Ahmad Wali.
 
 CP104: Introduction to Computer Programming 
 
