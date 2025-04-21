@@ -1,0 +1,28 @@
+New Student:
+                NAME: David Brown
+                  ID: 123456
+            BIRTHDAY: 1962-10-25
+
+----------------------------------------
+Test Getters
+                NAME: David Brown
+                  ID: 123456
+            BIRTHDAY: 1962-10-25
+
+----------------------------------------
+Test Setters
+                NAME: Ahmad Wali
+                  ID: 169036947
+            BIRTHDAY: 2004-05-05
+Updated Student:
+                NAME: Ahmad Wali
+                  ID: 169036947
+            BIRTHDAY: 2004-05-05
+
+----------------------------------------
+Test compareTo
+                NAME: Faiza Wali
+                  ID: 21270
+            BIRTHDAY: 2000-12-14
+
+1
