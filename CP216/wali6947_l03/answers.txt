@@ -1,0 +1,18 @@
+-------------------------------------------------------
+answers.txt
+-------------------------------------------------------
+Author: Ahmad Wali
+ID:16906947
+Email: wali6947@mylaurier.ca
+Date:    2025-02-03
+-------------------------------------------------------
+Answers for Lab 3
+-------------------------------------------------------
+Task 1:
+The value in register 3 is ffffffff in hexadecimal, or -1 in decimal. This happens because we branch to the top even when we equal 0, so we subtract one more time and get -1. If we had only used a branch greater than statement then we wouldn't have tripped off the final loop and had 0.
+
+Task 2:
+The address of counter in hexadecimal is 00001020.
+
+Task 3:
+By changing the values for LED_BITS and DELAY_TIME, we end up altering the pattern of the blinking lights easier than before.
