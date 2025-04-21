@@ -1,0 +1,17 @@
+-------------------------------------------------------
+answers.txt
+-------------------------------------------------------
+Author:  Ahmad Wali
+ID:      169036947
+Email:   wali6947@mylaurier.ca
+Date:    2025-01-21
+-------------------------------------------------------
+Answers for Lab 1
+-------------------------------------------------------
+Task 1:
+This task does ask me to explain anything, I have left the code attached in the file.
+Task 2:
+For this task, we have 36 bytes total. We know this because we can follow along with the arithmetic applied when incrementing our byte count (lines 30-35) where we can see the loop.
+Task 3:
+This task does not ask me to explain anything either. The code has also been attached.
+Task 4:
