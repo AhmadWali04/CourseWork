@@ -15,4 +15,8 @@ CP216: Microprocessors (ARM-v7)
 
 CP363: Databases (SQL)
 
-CP428: Artificial Intelligence 
+CP317: See Restaurant Rouleete Repository
+
+CP468: Artificial Intelligence 
+
+
